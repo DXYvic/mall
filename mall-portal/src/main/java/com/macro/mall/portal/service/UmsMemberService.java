@@ -61,4 +61,12 @@ public interface UmsMemberService {
      * 刷新token
      */
     String refreshToken(String token);
+
+    /**
+     * 更新会员信息
+     * @param id
+     * @param member
+     * @return
+     */
+    int update(Long id, UmsMember member);
 }

@@ -4,14 +4,12 @@ import cn.hutool.core.util.StrUtil;
 import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.mapper.UmsMemberLevelMapper;
 import com.macro.mall.mapper.UmsMemberMapper;
-import com.macro.mall.model.UmsMember;
-import com.macro.mall.model.UmsMemberExample;
-import com.macro.mall.model.UmsMemberLevel;
-import com.macro.mall.model.UmsMemberLevelExample;
+import com.macro.mall.model.*;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.UmsMemberCacheService;
 import com.macro.mall.portal.service.UmsMemberService;
 import com.macro.mall.security.util.JwtTokenUtil;
+import com.macro.mall.security.util.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -182,6 +180,30 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     @Override
     public String refreshToken(String token) {
         return jwtTokenUtil.refreshHeadToken(token);
+    }
+
+    @Override
+    public int update(Long id, UmsMember member) {
+        member.setId(id);
+        UmsMember rawMember = memberMapper.selectByPrimaryKey(id);
+        if(rawMember.getPassword().equals(member.getPassword())){
+            //与原加密密码相同的不需要修改
+            member.setPassword(null);
+        }else{
+            //与原加密密码不同的需要加密修改
+            if(StrUtil.isEmpty(member.getPassword())){
+                member.setPassword(null);
+            }else{
+                member.setPassword(passwordEncoder.encode(member.getPassword()));
+            }
+        }
+        int count = memberMapper.updateByPrimaryKeySelective(member);
+        getCacheService().delMember(id);
+        return count;
+    }
+
+    private UmsMemberCacheService getCacheService() {
+        return SpringUtil.getBean(UmsMemberCacheService.class);
     }
 
     //对输入的验证码进行校验

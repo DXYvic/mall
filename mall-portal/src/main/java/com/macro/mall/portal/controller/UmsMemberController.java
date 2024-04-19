@@ -9,10 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -43,7 +40,7 @@ public class UmsMemberController {
                                  @RequestParam String telephone,
                                  @RequestParam String authCode) {
         memberService.register(username, password, telephone, authCode);
-        return CommonResult.success(null,"注册成功");
+        return CommonResult.success(null, "注册成功");
     }
 
     @ApiOperation("会员登录")
@@ -65,11 +62,24 @@ public class UmsMemberController {
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult info(Principal principal) {
-        if(principal==null){
+        if (principal == null) {
             return CommonResult.unauthorized(null);
         }
         UmsMember member = memberService.getCurrentMember();
         return CommonResult.success(member);
+    }
+
+    @ApiOperation("更新会员信息")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult update(@PathVariable Long id, @RequestBody UmsMember member) {
+
+
+        int count = memberService.update(id, member);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
     }
 
     @ApiOperation("获取验证码")
@@ -77,17 +87,17 @@ public class UmsMemberController {
     @ResponseBody
     public CommonResult getAuthCode(@RequestParam String telephone) {
         String authCode = memberService.generateAuthCode(telephone);
-        return CommonResult.success(authCode,"获取验证码成功");
+        return CommonResult.success(authCode, "获取验证码成功");
     }
 
     @ApiOperation("会员修改密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updatePassword(@RequestParam String telephone,
-                                 @RequestParam String password,
-                                 @RequestParam String authCode) {
-        memberService.updatePassword(telephone,password,authCode);
-        return CommonResult.success(null,"密码修改成功");
+                                       @RequestParam String password,
+                                       @RequestParam String authCode) {
+        memberService.updatePassword(telephone, password, authCode);
+        return CommonResult.success(null, "密码修改成功");
     }
 
 
