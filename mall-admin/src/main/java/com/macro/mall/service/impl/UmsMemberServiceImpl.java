@@ -63,7 +63,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         UmsMemberExample.Criteria criteria = example.createCriteria();
         if (!StrUtil.isEmpty(keyword)) {
             criteria.andUsernameLike("%" + keyword + "%");
-            example.or(example.createCriteria().andNickNameLike("%" + keyword + "%"));
+            example.or(example.createCriteria().andNicknameLike("%" + keyword + "%"));
         }
         return memberMapper.selectByExample(example);
     }

@@ -421,10 +421,7 @@ public class UmsMemberExample {
             addCriterion("nickname >=", value, "nickname");
             return (Criteria) this;
         }
-        public UmsMemberExample.Criteria andNickNameLike(String value) {
-            addCriterion("nick_name like", value, "nickName");
-            return (Criteria) this;
-        }
+
         public Criteria andNicknameLessThan(String value) {
             addCriterion("nickname <", value, "nickname");
             return (Criteria) this;
