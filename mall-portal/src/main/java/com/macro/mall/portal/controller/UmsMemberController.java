@@ -1,6 +1,7 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
+import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsMember;
 import com.macro.mall.portal.service.UmsMemberService;
 import io.swagger.annotations.Api;
@@ -73,9 +74,19 @@ public class UmsMemberController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody UmsMember member) {
-
-
         int count = memberService.update(id, member);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
+    @ApiOperation("修改帐号状态")
+    @RequestMapping(value = "/updateStatus/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateStatus(@PathVariable Long id,@RequestParam(value = "status") Integer status) {
+        UmsMember umsMember = new UmsMember();
+        umsMember.setStatus(status);
+        int count = memberService.update(id,umsMember);
         if (count > 0) {
             return CommonResult.success(count);
         }
