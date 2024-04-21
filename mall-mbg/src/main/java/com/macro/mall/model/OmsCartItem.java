@@ -20,6 +20,9 @@ public class OmsCartItem implements Serializable {
     @ApiModelProperty(value = "添加到购物车的价格")
     private BigDecimal price;
 
+    @ApiModelProperty(value = "商品定制信息")
+    private String productMade;
+
     @ApiModelProperty(value = "商品主图")
     private String productPic;
 
@@ -32,7 +35,7 @@ public class OmsCartItem implements Serializable {
     @ApiModelProperty(value = "商品sku条码")
     private String productSkuCode;
 
-    @ApiModelProperty(value = "会员昵称")
+    @ApiModelProperty(value = "分销商昵称")
     private String memberNickname;
 
     @ApiModelProperty(value = "创建时间")
@@ -102,6 +105,14 @@ public class OmsCartItem implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getProductMade() {
+        return productMade;
+    }
+
+    public void setProductMade(String productMade) {
+        this.productMade = productMade;
     }
 
     public String getProductPic() {
@@ -212,6 +223,7 @@ public class OmsCartItem implements Serializable {
         sb.append(", memberId=").append(memberId);
         sb.append(", quantity=").append(quantity);
         sb.append(", price=").append(price);
+        sb.append(", productMade=").append(productMade);
         sb.append(", productPic=").append(productPic);
         sb.append(", productName=").append(productName);
         sb.append(", productSubTitle=").append(productSubTitle);

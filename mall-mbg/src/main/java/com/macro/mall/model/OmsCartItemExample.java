@@ -466,6 +466,76 @@ public class OmsCartItemExample {
             return (Criteria) this;
         }
 
+        public Criteria andProductMadeIsNull() {
+            addCriterion("product_made is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeIsNotNull() {
+            addCriterion("product_made is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeEqualTo(String value) {
+            addCriterion("product_made =", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeNotEqualTo(String value) {
+            addCriterion("product_made <>", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeGreaterThan(String value) {
+            addCriterion("product_made >", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeGreaterThanOrEqualTo(String value) {
+            addCriterion("product_made >=", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeLessThan(String value) {
+            addCriterion("product_made <", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeLessThanOrEqualTo(String value) {
+            addCriterion("product_made <=", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeLike(String value) {
+            addCriterion("product_made like", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeNotLike(String value) {
+            addCriterion("product_made not like", value, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeIn(List<String> values) {
+            addCriterion("product_made in", values, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeNotIn(List<String> values) {
+            addCriterion("product_made not in", values, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeBetween(String value1, String value2) {
+            addCriterion("product_made between", value1, value2, "productMade");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductMadeNotBetween(String value1, String value2) {
+            addCriterion("product_made not between", value1, value2, "productMade");
+            return (Criteria) this;
+        }
+
         public Criteria andProductPicIsNull() {
             addCriterion("product_pic is null");
             return (Criteria) this;
