@@ -118,6 +118,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             orderItem.setPromotionName(cartPromotionItem.getPromotionMessage());
             orderItem.setGiftIntegration(cartPromotionItem.getIntegration());
             orderItem.setGiftGrowth(cartPromotionItem.getGrowth());
+            orderItem.setProductMade(cartPromotionItem.getProductMade());
             orderItemList.add(orderItem);
         }
         //判断购物车中商品是否都有库存
