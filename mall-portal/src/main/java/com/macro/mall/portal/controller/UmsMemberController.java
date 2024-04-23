@@ -38,9 +38,9 @@ public class UmsMemberController {
     @ResponseBody
     public CommonResult register(@RequestParam String username,
                                  @RequestParam String password,
-                                 @RequestParam String telephone,
-                                 @RequestParam String authCode) {
-        memberService.register(username, password, telephone, authCode);
+                                 @RequestParam String telephone
+                                 ) {
+        memberService.register(username, password, telephone);
         return CommonResult.success(null, "注册成功");
     }
 
