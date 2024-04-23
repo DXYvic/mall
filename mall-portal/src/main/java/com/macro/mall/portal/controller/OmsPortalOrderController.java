@@ -2,6 +2,7 @@ package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
+import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OmsOrderDetail;
 import com.macro.mall.portal.domain.OrderParam;
@@ -37,7 +38,16 @@ public class OmsPortalOrderController {
         return CommonResult.success(confirmOrderResult);
     }
 
-    @ApiOperation("根据购物车信息生成订单")
+    @ApiOperation("由立即支付生成确认订单")
+    @RequestMapping(value = "/generateConfirmOrderByPayment/{productId}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<ConfirmOrderResult> generateConfirmOrderByPayment(@RequestParam Long productId) {
+
+        ConfirmOrderResult confirmOrderResult = portalOrderService.generateConfirmOrderByPayment(productId);
+        return CommonResult.success(confirmOrderResult);
+    }
+
+    @ApiOperation("根据购物车信息生成订单（提交订单）")
     @RequestMapping(value = "/generateOrder", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult generateOrder(@RequestBody OrderParam orderParam) {

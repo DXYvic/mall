@@ -434,6 +434,35 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         }
     }
 
+    //todo:完善立即支付接口
+    @Override
+    public ConfirmOrderResult generateConfirmOrderByPayment(Long productId) {
+        ConfirmOrderResult result = new ConfirmOrderResult();
+        //获取购物车信息
+        UmsMember currentMember = memberService.getCurrentMember();
+
+//        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotionbyProductId(currentMember.getId(),productId);
+//        result.setCartPromotionItemList(cartPromotionItemList);
+
+
+
+//        //获取用户收货地址列表
+//        List<UmsMemberReceiveAddress> memberReceiveAddressList = memberReceiveAddressService.list();
+//        result.setMemberReceiveAddressList(memberReceiveAddressList);
+//        //获取用户可用优惠券列表
+//        List<SmsCouponHistoryDetail> couponHistoryDetailList = memberCouponService.listCart(cartPromotionItemList, 1);
+//        result.setCouponHistoryDetailList(couponHistoryDetailList);
+//        //获取用户积分
+//        result.setMemberIntegration(currentMember.getIntegration());
+//        //获取积分使用规则
+//        UmsIntegrationConsumeSetting integrationConsumeSetting = integrationConsumeSettingMapper.selectByPrimaryKey(1L);
+//        result.setIntegrationConsumeSetting(integrationConsumeSetting);
+//        //计算总金额、活动优惠、应付金额
+//        ConfirmOrderResult.CalcAmount calcAmount = calcCartAmount(cartPromotionItemList);
+//        result.setCalcAmount(calcAmount);
+        return result;
+    }
+
     /**
      * 生成18位订单编号:8位日期+2位平台号码+2位支付方式+6位以上自增id
      */

@@ -1,6 +1,7 @@
 package com.macro.mall.portal.service;
 
 import com.macro.mall.common.api.CommonPage;
+import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OmsOrderDetail;
 import com.macro.mall.portal.domain.OrderParam;
@@ -73,4 +74,11 @@ public interface OmsPortalOrderService {
      */
     @Transactional
     void paySuccessByOrderSn(String orderSn, Integer payType);
+
+    /**
+     * 由立即购买生成确认订单
+     * @param productId
+     * @return
+     */
+    ConfirmOrderResult generateConfirmOrderByPayment(Long productId);
 }
