@@ -77,8 +77,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         List<UmsMemberReceiveAddress> memberReceiveAddressList = memberReceiveAddressService.list();
         result.setMemberReceiveAddressList(memberReceiveAddressList);
         //获取用户可用优惠券列表
-        List<SmsCouponHistoryDetail> couponHistoryDetailList = memberCouponService.listCart(cartPromotionItemList, 1);
-        result.setCouponHistoryDetailList(couponHistoryDetailList);
+//        List<SmsCouponHistoryDetail> couponHistoryDetailList = memberCouponService.listCart(cartPromotionItemList, 1);
+//        result.setCouponHistoryDetailList(couponHistoryDetailList);
         //获取用户积分
         result.setMemberIntegration(currentMember.getIntegration());
         //获取积分使用规则
@@ -117,7 +117,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             orderItem.setPromotionAmount(cartPromotionItem.getReduceAmount());
             orderItem.setPromotionName(cartPromotionItem.getPromotionMessage());
             orderItem.setGiftIntegration(cartPromotionItem.getIntegration());
-            orderItem.setGiftGrowth(cartPromotionItem.getGrowth());
+//            orderItem.setGiftGrowth(cartPromotionItem.getGrowth());
             orderItem.setProductMade(cartPromotionItem.getProductMade());
             orderItemList.add(orderItem);
         }
@@ -125,8 +125,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         if (!hasStock(cartPromotionItemList)) {
             Asserts.fail("库存不足，无法下单");
         }
+
         //判断使用使用了优惠券
-        if (orderParam.getCouponId() == null) {
+        /*if (orderParam.getCouponId() == null) {
             //不用优惠券
             for (OmsOrderItem orderItem : orderItemList) {
                 orderItem.setCouponAmount(new BigDecimal(0));
@@ -139,7 +140,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             }
             //对下单商品的优惠券进行处理
             handleCouponAmount(orderItemList, couponHistoryDetail);
-        }
+        }*/
+
         //判断是否使用积分
         if (orderParam.getUseIntegration() == null||orderParam.getUseIntegration().equals(0)) {
             //不使用积分
@@ -171,12 +173,12 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         order.setFreightAmount(new BigDecimal(0));
         order.setPromotionAmount(calcPromotionAmount(orderItemList));
         order.setPromotionInfo(getOrderPromotionInfo(orderItemList));
-        if (orderParam.getCouponId() == null) {
-            order.setCouponAmount(new BigDecimal(0));
+//        order.setCouponAmount(new BigDecimal(0));
+        /*if (orderParam.getCouponId() == null) {
         } else {
             order.setCouponId(orderParam.getCouponId());
             order.setCouponAmount(calcCouponAmount(orderItemList));
-        }
+        }*/
         if (orderParam.getUseIntegration() == null) {
             order.setIntegration(0);
             order.setIntegrationAmount(new BigDecimal(0));
@@ -212,7 +214,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         //计算赠送积分
         order.setIntegration(calcGifIntegration(orderItemList));
         //计算赠送成长值
-        order.setGrowth(calcGiftGrowth(orderItemList));
+//        order.setGrowth(calcGiftGrowth(orderItemList));
         //生成订单号
         order.setOrderSn(generateOrderSn(order));
         //设置自动收货天数
@@ -229,9 +231,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         }
         orderItemDao.insertList(orderItemList);
         //如使用优惠券更新优惠券使用状态
-        if (orderParam.getCouponId() != null) {
-            updateCouponStatus(orderParam.getCouponId(), currentMember.getId(), 1);
-        }
+//        if (orderParam.getCouponId() != null) {
+//            updateCouponStatus(orderParam.getCouponId(), currentMember.getId(), 1);
+//        }
         //如使用积分需要扣除积分
         if (orderParam.getUseIntegration() != null) {
             order.setUseIntegration(orderParam.getUseIntegration());
@@ -284,7 +286,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             //解除订单商品库存锁定
             portalOrderDao.releaseSkuStockLock(timeOutOrder.getOrderItemList());
             //修改优惠券使用状态
-            updateCouponStatus(timeOutOrder.getCouponId(), timeOutOrder.getMemberId(), 0);
+//            updateCouponStatus(timeOutOrder.getCouponId(), timeOutOrder.getMemberId(), 0);
             //返还使用积分
             if (timeOutOrder.getUseIntegration() != null) {
                 UmsMember member = memberService.getById(timeOutOrder.getMemberId());
@@ -316,7 +318,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
                 portalOrderDao.releaseSkuStockLock(orderItemList);
             }
             //修改优惠券使用状态
-            updateCouponStatus(cancelOrder.getCouponId(), cancelOrder.getMemberId(), 0);
+//            updateCouponStatus(cancelOrder.getCouponId(), cancelOrder.getMemberId(), 0);
             //返还使用积分
             if (cancelOrder.getUseIntegration() != null) {
                 UmsMember member = memberService.getById(cancelOrder.getMemberId());
@@ -542,8 +544,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         for (OmsOrderItem orderItem : orderItemList) {
             //原价-促销优惠-优惠券抵扣-积分抵扣
             BigDecimal realAmount = orderItem.getProductPrice()
-                    .subtract(orderItem.getPromotionAmount())
-                    .subtract(orderItem.getCouponAmount())
+//                    .subtract(orderItem.getPromotionAmount())
+//                    .subtract(orderItem.getCouponAmount())
                     .subtract(orderItem.getIntegrationAmount());
             orderItem.setRealAmount(realAmount);
         }
@@ -573,7 +575,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         BigDecimal payAmount = order.getTotalAmount()
                 .add(order.getFreightAmount())
                 .subtract(order.getPromotionAmount())
-                .subtract(order.getCouponAmount())
+//                .subtract(order.getCouponAmount())
                 .subtract(order.getIntegrationAmount());
         return payAmount;
     }

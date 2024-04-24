@@ -20,8 +20,8 @@ public class ConfirmOrderResult {
     private List<CartPromotionItem> cartPromotionItemList;
     @ApiModelProperty("用户收货地址列表")
     private List<UmsMemberReceiveAddress> memberReceiveAddressList;
-    @ApiModelProperty("用户可用优惠券列表")
-    private List<SmsCouponHistoryDetail> couponHistoryDetailList;
+//    @ApiModelProperty("用户可用优惠券列表")
+//    private List<SmsCouponHistoryDetail> couponHistoryDetailList;
     @ApiModelProperty("积分使用规则")
     private UmsIntegrationConsumeSetting integrationConsumeSetting;
     @ApiModelProperty("会员持有的积分")

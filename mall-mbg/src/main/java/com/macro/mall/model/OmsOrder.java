@@ -11,8 +11,6 @@ public class OmsOrder implements Serializable {
 
     private Long memberId;
 
-    private Long couponId;
-
     @ApiModelProperty(value = "订单编号")
     private String orderSn;
 
@@ -36,9 +34,6 @@ public class OmsOrder implements Serializable {
 
     @ApiModelProperty(value = "积分抵扣金额")
     private BigDecimal integrationAmount;
-
-    @ApiModelProperty(value = "优惠券抵扣金额")
-    private BigDecimal couponAmount;
 
     @ApiModelProperty(value = "管理员后台调整订单使用的折扣金额")
     private BigDecimal discountAmount;
@@ -67,26 +62,8 @@ public class OmsOrder implements Serializable {
     @ApiModelProperty(value = "可以获得的积分")
     private Integer integration;
 
-    @ApiModelProperty(value = "可以活动的成长值")
-    private Integer growth;
-
     @ApiModelProperty(value = "活动信息")
     private String promotionInfo;
-
-    @ApiModelProperty(value = "发票类型：0->不开发票；1->电子发票；2->纸质发票")
-    private Integer billType;
-
-    @ApiModelProperty(value = "发票抬头")
-    private String billHeader;
-
-    @ApiModelProperty(value = "发票内容")
-    private String billContent;
-
-    @ApiModelProperty(value = "收票人电话")
-    private String billReceiverPhone;
-
-    @ApiModelProperty(value = "收票人邮箱")
-    private String billReceiverEmail;
 
     @ApiModelProperty(value = "收货人姓名")
     private String receiverName;
@@ -154,14 +131,6 @@ public class OmsOrder implements Serializable {
         this.memberId = memberId;
     }
 
-    public Long getCouponId() {
-        return couponId;
-    }
-
-    public void setCouponId(Long couponId) {
-        this.couponId = couponId;
-    }
-
     public String getOrderSn() {
         return orderSn;
     }
@@ -224,14 +193,6 @@ public class OmsOrder implements Serializable {
 
     public void setIntegrationAmount(BigDecimal integrationAmount) {
         this.integrationAmount = integrationAmount;
-    }
-
-    public BigDecimal getCouponAmount() {
-        return couponAmount;
-    }
-
-    public void setCouponAmount(BigDecimal couponAmount) {
-        this.couponAmount = couponAmount;
     }
 
     public BigDecimal getDiscountAmount() {
@@ -306,60 +267,12 @@ public class OmsOrder implements Serializable {
         this.integration = integration;
     }
 
-    public Integer getGrowth() {
-        return growth;
-    }
-
-    public void setGrowth(Integer growth) {
-        this.growth = growth;
-    }
-
     public String getPromotionInfo() {
         return promotionInfo;
     }
 
     public void setPromotionInfo(String promotionInfo) {
         this.promotionInfo = promotionInfo;
-    }
-
-    public Integer getBillType() {
-        return billType;
-    }
-
-    public void setBillType(Integer billType) {
-        this.billType = billType;
-    }
-
-    public String getBillHeader() {
-        return billHeader;
-    }
-
-    public void setBillHeader(String billHeader) {
-        this.billHeader = billHeader;
-    }
-
-    public String getBillContent() {
-        return billContent;
-    }
-
-    public void setBillContent(String billContent) {
-        this.billContent = billContent;
-    }
-
-    public String getBillReceiverPhone() {
-        return billReceiverPhone;
-    }
-
-    public void setBillReceiverPhone(String billReceiverPhone) {
-        this.billReceiverPhone = billReceiverPhone;
-    }
-
-    public String getBillReceiverEmail() {
-        return billReceiverEmail;
-    }
-
-    public void setBillReceiverEmail(String billReceiverEmail) {
-        this.billReceiverEmail = billReceiverEmail;
     }
 
     public String getReceiverName() {
@@ -498,7 +411,6 @@ public class OmsOrder implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", memberId=").append(memberId);
-        sb.append(", couponId=").append(couponId);
         sb.append(", orderSn=").append(orderSn);
         sb.append(", createTime=").append(createTime);
         sb.append(", memberUsername=").append(memberUsername);
@@ -507,7 +419,6 @@ public class OmsOrder implements Serializable {
         sb.append(", freightAmount=").append(freightAmount);
         sb.append(", promotionAmount=").append(promotionAmount);
         sb.append(", integrationAmount=").append(integrationAmount);
-        sb.append(", couponAmount=").append(couponAmount);
         sb.append(", discountAmount=").append(discountAmount);
         sb.append(", payType=").append(payType);
         sb.append(", sourceType=").append(sourceType);
@@ -517,13 +428,7 @@ public class OmsOrder implements Serializable {
         sb.append(", deliverySn=").append(deliverySn);
         sb.append(", autoConfirmDay=").append(autoConfirmDay);
         sb.append(", integration=").append(integration);
-        sb.append(", growth=").append(growth);
         sb.append(", promotionInfo=").append(promotionInfo);
-        sb.append(", billType=").append(billType);
-        sb.append(", billHeader=").append(billHeader);
-        sb.append(", billContent=").append(billContent);
-        sb.append(", billReceiverPhone=").append(billReceiverPhone);
-        sb.append(", billReceiverEmail=").append(billReceiverEmail);
         sb.append(", receiverName=").append(receiverName);
         sb.append(", receiverPhone=").append(receiverPhone);
         sb.append(", receiverPostCode=").append(receiverPostCode);

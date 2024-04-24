@@ -11,7 +11,7 @@
         SELECT
             o.id,
             o.order_sn,
-            o.coupon_id,
+#             o.coupon_id,
             o.integration,
             o.member_id,
             ot.id ot_id,

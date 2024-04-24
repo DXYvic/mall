@@ -77,7 +77,7 @@ public class PmsProductController {
         List<PmsProduct> productList = productService.list(keyword);
         return CommonResult.success(productList);
     }
-
+    //todo: 待删除
     @ApiOperation("批量修改审核状态")
     @RequestMapping(value = "/update/verifyStatus", method = RequestMethod.POST)
     @ResponseBody
