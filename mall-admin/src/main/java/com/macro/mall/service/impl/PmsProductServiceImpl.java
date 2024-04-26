@@ -125,20 +125,20 @@ public class PmsProductServiceImpl implements PmsProductService {
         product.setId(id);
         productMapper.updateByPrimaryKeySelective(product);
         //会员价格
-        PmsMemberPriceExample pmsMemberPriceExample = new PmsMemberPriceExample();
-        pmsMemberPriceExample.createCriteria().andProductIdEqualTo(id);
-        memberPriceMapper.deleteByExample(pmsMemberPriceExample);
-        relateAndInsertList(memberPriceDao, productParam.getMemberPriceList(), id);
+//        PmsMemberPriceExample pmsMemberPriceExample = new PmsMemberPriceExample();
+//        pmsMemberPriceExample.createCriteria().andProductIdEqualTo(id);
+//        memberPriceMapper.deleteByExample(pmsMemberPriceExample);
+//        relateAndInsertList(memberPriceDao, productParam.getMemberPriceList(), id);
         //阶梯价格
-        PmsProductLadderExample ladderExample = new PmsProductLadderExample();
-        ladderExample.createCriteria().andProductIdEqualTo(id);
-        productLadderMapper.deleteByExample(ladderExample);
-        relateAndInsertList(productLadderDao, productParam.getProductLadderList(), id);
+//        PmsProductLadderExample ladderExample = new PmsProductLadderExample();
+//        ladderExample.createCriteria().andProductIdEqualTo(id);
+//        productLadderMapper.deleteByExample(ladderExample);
+//        relateAndInsertList(productLadderDao, productParam.getProductLadderList(), id);
         //满减价格
-        PmsProductFullReductionExample fullReductionExample = new PmsProductFullReductionExample();
-        fullReductionExample.createCriteria().andProductIdEqualTo(id);
-        productFullReductionMapper.deleteByExample(fullReductionExample);
-        relateAndInsertList(productFullReductionDao, productParam.getProductFullReductionList(), id);
+//        PmsProductFullReductionExample fullReductionExample = new PmsProductFullReductionExample();
+//        fullReductionExample.createCriteria().andProductIdEqualTo(id);
+//        productFullReductionMapper.deleteByExample(fullReductionExample);
+//        relateAndInsertList(productFullReductionDao, productParam.getProductFullReductionList(), id);
         //修改sku库存信息
         handleUpdateSkuStockList(id, productParam);
         //修改商品参数,添加自定义商品规格
@@ -147,15 +147,15 @@ public class PmsProductServiceImpl implements PmsProductService {
         productAttributeValueMapper.deleteByExample(productAttributeValueExample);
         relateAndInsertList(productAttributeValueDao, productParam.getProductAttributeValueList(), id);
         //关联专题
-        CmsSubjectProductRelationExample subjectProductRelationExample = new CmsSubjectProductRelationExample();
+        /*CmsSubjectProductRelationExample subjectProductRelationExample = new CmsSubjectProductRelationExample();
         subjectProductRelationExample.createCriteria().andProductIdEqualTo(id);
         subjectProductRelationMapper.deleteByExample(subjectProductRelationExample);
-        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), id);
+        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), id);*/
         //关联优选
-        CmsPrefrenceAreaProductRelationExample prefrenceAreaExample = new CmsPrefrenceAreaProductRelationExample();
+        /*CmsPrefrenceAreaProductRelationExample prefrenceAreaExample = new CmsPrefrenceAreaProductRelationExample();
         prefrenceAreaExample.createCriteria().andProductIdEqualTo(id);
         prefrenceAreaProductRelationMapper.deleteByExample(prefrenceAreaExample);
-        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), id);
+        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), id);*/
         count = 1;
         return count;
     }
