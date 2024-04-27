@@ -75,10 +75,10 @@ public interface OmsPortalOrderService {
     @Transactional
     void paySuccessByOrderSn(String orderSn, Integer payType);
 
+
     /**
-     * 由立即购买生成确认订单
-     * @param productId
+     * 由立即购买生成订单
      * @return
      */
-    ConfirmOrderResult generateConfirmOrderByPayment(Long productId);
+    Map<String, Object> generateOrderByPayment(OmsCartItem cartItem, Integer payType,  Long memberReceiveAddressId,Integer giftPoint);
 }

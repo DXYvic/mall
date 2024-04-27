@@ -192,66 +192,6 @@ public class UmsMemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemberLevelIdIsNull() {
-            addCriterion("member_level_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdIsNotNull() {
-            addCriterion("member_level_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdEqualTo(Long value) {
-            addCriterion("member_level_id =", value, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdNotEqualTo(Long value) {
-            addCriterion("member_level_id <>", value, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdGreaterThan(Long value) {
-            addCriterion("member_level_id >", value, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("member_level_id >=", value, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdLessThan(Long value) {
-            addCriterion("member_level_id <", value, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdLessThanOrEqualTo(Long value) {
-            addCriterion("member_level_id <=", value, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdIn(List<Long> values) {
-            addCriterion("member_level_id in", values, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdNotIn(List<Long> values) {
-            addCriterion("member_level_id not in", values, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdBetween(Long value1, Long value2) {
-            addCriterion("member_level_id between", value1, value2, "memberLevelId");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberLevelIdNotBetween(Long value1, Long value2) {
-            addCriterion("member_level_id not between", value1, value2, "memberLevelId");
-            return (Criteria) this;
-        }
-
         public Criteria andUsernameIsNull() {
             addCriterion("username is null");
             return (Criteria) this;
@@ -1349,6 +1289,66 @@ public class UmsMemberExample {
 
         public Criteria andHistoryIntegrationNotBetween(Integer value1, Integer value2) {
             addCriterion("history_integration not between", value1, value2, "historyIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdIsNull() {
+            addCriterion("member_level_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdIsNotNull() {
+            addCriterion("member_level_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdEqualTo(Integer value) {
+            addCriterion("member_level_id =", value, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdNotEqualTo(Integer value) {
+            addCriterion("member_level_id <>", value, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdGreaterThan(Integer value) {
+            addCriterion("member_level_id >", value, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("member_level_id >=", value, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdLessThan(Integer value) {
+            addCriterion("member_level_id <", value, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdLessThanOrEqualTo(Integer value) {
+            addCriterion("member_level_id <=", value, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdIn(List<Integer> values) {
+            addCriterion("member_level_id in", values, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdNotIn(List<Integer> values) {
+            addCriterion("member_level_id not in", values, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdBetween(Integer value1, Integer value2) {
+            addCriterion("member_level_id between", value1, value2, "memberLevelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("member_level_id not between", value1, value2, "memberLevelId");
             return (Criteria) this;
         }
     }

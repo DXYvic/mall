@@ -38,13 +38,15 @@ public class OmsPortalOrderController {
         return CommonResult.success(confirmOrderResult);
     }
 
-    @ApiOperation("由立即支付生成确认订单")
-    @RequestMapping(value = "/generateConfirmOrderByPayment/{productId}", method = RequestMethod.POST)
+    @ApiOperation("由立即支付生成订单")
+    @RequestMapping(value = "/generateOrderByPayment", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<ConfirmOrderResult> generateConfirmOrderByPayment(@RequestParam Long productId) {
-
-        ConfirmOrderResult confirmOrderResult = portalOrderService.generateConfirmOrderByPayment(productId);
-        return CommonResult.success(confirmOrderResult);
+    public CommonResult generateOrderByPayment(@RequestBody OmsCartItem cartItem,@RequestParam Integer payType,
+                                                                   @RequestParam Long memberReceiveAddressId,
+                                                                   @RequestParam Integer giftPoint
+                                                                  ) {
+        Map<String, Object> result = portalOrderService.generateOrderByPayment(cartItem, payType,  memberReceiveAddressId,giftPoint);
+        return CommonResult.success(result, "下单成功");
     }
 
     @ApiOperation("根据购物车信息生成订单（提交订单）")

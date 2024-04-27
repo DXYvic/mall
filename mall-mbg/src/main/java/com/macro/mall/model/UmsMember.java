@@ -7,8 +7,6 @@ import java.util.Date;
 public class UmsMember implements Serializable {
     private Long id;
 
-    private Long memberLevelId;
-
     @ApiModelProperty(value = "用户名")
     private String username;
 
@@ -60,6 +58,9 @@ public class UmsMember implements Serializable {
     @ApiModelProperty(value = "历史积分数量")
     private Integer historyIntegration;
 
+    @ApiModelProperty(value = "分销商等级")
+    private Integer memberLevelId;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -68,14 +69,6 @@ public class UmsMember implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getMemberLevelId() {
-        return memberLevelId;
-    }
-
-    public void setMemberLevelId(Long memberLevelId) {
-        this.memberLevelId = memberLevelId;
     }
 
     public String getUsername() {
@@ -214,6 +207,14 @@ public class UmsMember implements Serializable {
         this.historyIntegration = historyIntegration;
     }
 
+    public Integer getMemberLevelId() {
+        return memberLevelId;
+    }
+
+    public void setMemberLevelId(Integer memberLevelId) {
+        this.memberLevelId = memberLevelId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -221,7 +222,6 @@ public class UmsMember implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", memberLevelId=").append(memberLevelId);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", nickname=").append(nickname);
@@ -239,6 +239,7 @@ public class UmsMember implements Serializable {
         sb.append(", growth=").append(growth);
         sb.append(", luckeyCount=").append(luckeyCount);
         sb.append(", historyIntegration=").append(historyIntegration);
+        sb.append(", memberLevelId=").append(memberLevelId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

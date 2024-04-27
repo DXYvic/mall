@@ -90,12 +90,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
         //获取默认会员等级并设置
-        UmsMemberLevelExample levelExample = new UmsMemberLevelExample();
-        levelExample.createCriteria().andDefaultStatusEqualTo(1);
-        List<UmsMemberLevel> memberLevelList = memberLevelMapper.selectByExample(levelExample);
-        if (!CollectionUtils.isEmpty(memberLevelList)) {
-            umsMember.setMemberLevelId(memberLevelList.get(0).getId());
-        }
+//        UmsMemberLevelExample levelExample = new UmsMemberLevelExample();
+//        levelExample.createCriteria().andDefaultStatusEqualTo(1);
+//        List<UmsMemberLevel> memberLevelList = memberLevelMapper.selectByExample(levelExample);
+//        if (!CollectionUtils.isEmpty(memberLevelList)) {
+//            umsMember.setMemberLevelId(memberLevelList.get(0).getId());
+//        }
         memberMapper.insert(umsMember);
         umsMember.setPassword(null);
     }
