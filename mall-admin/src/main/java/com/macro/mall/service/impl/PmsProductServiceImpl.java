@@ -87,9 +87,9 @@ public class PmsProductServiceImpl implements PmsProductService {
         //添加商品参数,添加自定义商品规格
         relateAndInsertList(productAttributeValueDao, productParam.getProductAttributeValueList(), productId);
         //关联专题
-        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
+//        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
         //关联优选
-        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
+//        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
         count = 1;
         return count;
     }
